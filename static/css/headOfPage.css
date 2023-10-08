@@ -1,0 +1,60 @@
+header{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: sticky;
+    top:0;
+    height: auto;
+    justify-content: space-between;
+    margin: 0px -20px 10px -20px;
+    padding: 10px 5px;
+    background-color:  lightgray;
+}
+
+.pageName{
+    margin: 10px 15px 10px 15px;
+    align-self: center;
+    color:black;
+}
+
+.headerSearch{
+    height: 30px;
+    width: 225px;
+    border-radius: 15px ;
+    align-self: center;
+    margin: 10px 15px 10px 15px;
+    border: 1px solid black;
+}
+
+.headerSearchButton{
+    height: 30px;
+    width: 50;
+    align-self: center;
+}
+
+.usersImage{
+    height: 60px;
+    width: 60px;
+    align-self: center;
+}
+
+.usersNickname{
+    color:black;
+}
+
+.navigationBarAccountPart{
+    display: flex; 
+    flex-direction: row;
+    width: fit-content;
+    align-items: center;
+    margin: 0px 15px 0px 15px;
+}
+
+.navigationBarAccountButtons{
+    display: flex;
+    height: 40px;
+    padding: 3px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}

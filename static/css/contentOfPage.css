@@ -1,0 +1,95 @@
+body {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 20px;
+    margin: auto;
+    background-color: rgba(128, 128, 128, 0.21);
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+}
+
+.leftPartOfMain{
+    display: flex;
+    width: 70%;
+    margin: 5px;
+}
+
+.mainContent{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    /* flex-wrap: wrap;  */
+}
+
+.tag{
+    margin: 0px 5px;
+} 
+
+.pageButton{
+    padding:2px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    min-width: 25px;
+    height: 25px;
+    margin:5px;
+    border-radius:2px;
+}
+
+.counterOfLikes{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-between;
+    height: fit-content;
+    width: fit-content;
+    margin: 5px 5px 5px 5px;
+    border: 2px solid black;
+    align-self: center;
+}
+
+.contentOfAnswerOrQuestion{
+    display:flex;
+    flex-direction:row;
+    justify-content: start;
+    border: 2px solid black;
+    margin: 5px 0px;
+    padding: 10px;
+    height: fit-content;
+    width: 100%;
+}
+
+.imageOfUserAnswerOrQuestionWithCounter{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    min-width: 20%;
+    padding: 10px;
+}
+
+.imageOfUserAnswerOrQuestion{
+    height: 75px;
+    width: 75px;
+    align-self: center;
+}
+
+.numberOfPagesWithAnswerOrQuestion{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    margin-bottom: 30px;
+}  
+
+.listOfAnswersOrQuestions{
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    width: 100%;
+}

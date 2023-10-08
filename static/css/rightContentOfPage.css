@@ -1,0 +1,25 @@
+.popularTags{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0px 0px 50px;
+}
+
+.rightPartOfMain{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30%;
+    margin: 5px;
+    padding: 10px 20px;
+    height: fit-content;
+}
+ 
+
+.bestMembers{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 0px 0px 50px;
+}

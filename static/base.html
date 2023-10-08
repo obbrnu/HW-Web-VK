@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/headOfPage.css" rel="stylesheet">
+    <link href="css/contentOfPage.css" rel="stylesheet">
+    <link href="css/rightContentOfPage.css" rel="stylesheet">
+    <link href="css/allQuestions.css" rel="stylesheet">
+    <link href="css/oneQuestion.css" rel="stylesheet">
+    <link href="css/questionFormStyle.css" rel="stylesheet">
+    <link href="css/regOrLogFormStyle.css" rel="stylesheet">
+    <link href="css/bottomOfPage.css" rel="stylesheet">
+    <title>base</title>
+</head>
+
+<body>
+
+    <header>
+
+        <h2><a class="pageName" href="#">AskSomebodyLikeMe</a></h2>
+
+        <form class="d-flex">
+            <input class="headerSearch me-2" type="search" placeholder="&#128269 Search" aria-label="Search">
+            <button class="headerSearchButton">ASK!</button>
+        </form>
+
+        <div class="navigationBarAccountPart">
+            <a href="#"><img class="usersImage" src="img/avatarTemp.jpg"></a>
+            <div style="flex-direction: column; margin-left: 10px;">
+                <a class="usersNickname" href="#">Obbrnu</a>
+                <div class="navigationBarAccountButtons">
+                    <a class="accountButtons" href="#" style="margin-right:10px; margin-left:-3px;">Settings</a>
+                    <a class="accountButtons" href="#">Log out</a>
+                </div>
+            </div>
+        </div>
+
+<!-- TODO: реализовать показ аккаунта или кнопок регистраци в зависимости от статуса пользователя-->
+
+        <!-- <div class="navigationBarAccountPart">
+            <div class="navigationBarAccountButtons">
+                <a class="accountButtons me-2" href="#" style="margin-right:10px;">Log in</a>
+                <a class="accountButtons" href="#">Register</a>
+            </div>
+        </div> -->
+
+
+    </header>
+
+    <main>
+        <div class="mainContent">
+
+            <div class="leftPartOfMain">
+                Place for another views
+            </div>
+            
+            <div class="rightPartOfMain">
+
+                <h3>Popular Tags</h3>
+                <div class="popularTags">
+                    <div class="tag" style="color: red; font-size:25px">testTag1</div>
+                    <div class="tag">testTag2</div>
+                    <div class="tag"style="color: orange; font-size:20px">testTag3</div>
+                    <div class="tag"style="color: green">testTag4</div>
+                    <div class="tag" >testTag5</div>
+                    <div class="tag"style="color: red; font-size:25px">testTag6</div>
+                    <div class="tag">testTag6</div>
+                    <div class="tag">testTag6</div>
+                </div>
+
+                <h3>Best Members</h3>
+                <div class="bestMembers">
+                    <a href="#">testUser1</a>
+                    <a href="#">testUser2</a>
+                    <a href="#">testUser3</a>
+                    <a href="#">testUser4</a>
+                    <a href="#">testUser5</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        Place for footer
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

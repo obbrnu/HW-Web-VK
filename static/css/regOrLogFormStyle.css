@@ -1,0 +1,30 @@
+.listOfRegFormGroups{
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    width: 100%;
+}
+
+.regFormGroups{
+    display:flex;
+    flex-direction:row;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 100%;
+    margin: 5px 0px;
+}
+
+.regFormLabel{
+    width: 140px; 
+}
+
+.regFormInput{ 
+    width: 250px;
+    height: 35px;
+    border: 1px solid black;
+}
+
+.regFormError{
+    font-size: small;
+    color: red;
+}

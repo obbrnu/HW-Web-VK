@@ -1,0 +1,34 @@
+.listOfQuestion{
+    display:flex;
+    flex-direction:column;
+    justify-content: start;
+    width: 100%;
+}
+
+.headerOfListOfQuestions {
+    display:flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.infoOfQuestion{
+    display:flex;
+    flex-direction:column;
+    justify-content: space-between;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.bottomOfInfoOfQuestion{
+    display:flex;
+    flex-direction:row;
+    justify-content: start;
+}
+
+.tagsOfQuestion{
+    margin: 0px 20px;
+    display:flex;
+    flex-direction:row;
+    justify-content:  start;
+    flex-wrap: wrap;
+}  
