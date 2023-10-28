@@ -18,76 +18,79 @@
 </head>
 
 <body>
+    <div class="container">
 
-    <header>
+        <header>
 
-        <h2><a class="pageName" href="#">AskSomebodyLikeMe</a></h2>
+            <h2><a class="pageName" href="#">AskSomebodyLikeMe</a></h2>
 
-        <form class="d-flex">
-            <input class="headerSearch me-2" type="search" placeholder="&#128269 Search" aria-label="Search">
-            <button class="headerSearchButton">ASK!</button>
-        </form>
+            <form class="d-flex">
+                <input class="headerSearch me-2" type="search" placeholder="&#128269 Search" aria-label="Search">
+                <button class="headerSearchButton">ASK!</button>
+            </form>
 
-        <div class="navigationBarAccountPart">
-            <a href="#"><img class="usersImage" src="img/avatarTemp.jpg"></a>
-            <div style="flex-direction: column; margin-left: 10px;">
-                <a class="usersNickname" href="#">Obbrnu</a>
+            <div class="navigationBarAccountPart">
+                <a href="#"><img class="usersImage" src="img/avatarTemp.jpg"></a>
+                <div style="flex-direction: column; margin-left: 10px;">
+                    <a class="usersNickname" href="#">Obbrnu</a>
+                    <div class="navigationBarAccountButtons">
+                        <a class="accountButtons" href="#" style="margin-right:10px; margin-left:-3px;">Settings</a>
+                        <a class="accountButtons" href="#">Log out</a>
+                    </div>
+                </div>
+            </div>
+
+    <!-- TODO: реализовать показ аккаунта или кнопок регистраци в зависимости от статуса пользователя-->
+
+            <!-- <div class="navigationBarAccountPart">
                 <div class="navigationBarAccountButtons">
-                    <a class="accountButtons" href="#" style="margin-right:10px; margin-left:-3px;">Settings</a>
-                    <a class="accountButtons" href="#">Log out</a>
+                    <a class="accountButtons me-2" href="#" style="margin-right:10px;">Log in</a>
+                    <a class="accountButtons" href="#">Register</a>
                 </div>
-            </div>
-        </div>
-
-<!-- TODO: реализовать показ аккаунта или кнопок регистраци в зависимости от статуса пользователя-->
-
-        <!-- <div class="navigationBarAccountPart">
-            <div class="navigationBarAccountButtons">
-                <a class="accountButtons me-2" href="#" style="margin-right:10px;">Log in</a>
-                <a class="accountButtons" href="#">Register</a>
-            </div>
-        </div> -->
+            </div> -->
 
 
-    </header>
+        </header>
 
-    <main>
-        <div class="mainContent">
+        <main>
+            <div class="mainContent">
 
-            <div class="leftPartOfMain">
-                Place for another views
-            </div>
-            
-            <div class="rightPartOfMain">
-
-                <h3>Popular Tags</h3>
-                <div class="popularTags">
-                    <div class="tag" style="color: red; font-size:25px">testTag1</div>
-                    <div class="tag">testTag2</div>
-                    <div class="tag"style="color: orange; font-size:20px">testTag3</div>
-                    <div class="tag"style="color: green">testTag4</div>
-                    <div class="tag" >testTag5</div>
-                    <div class="tag"style="color: red; font-size:25px">testTag6</div>
-                    <div class="tag">testTag6</div>
-                    <div class="tag">testTag6</div>
+                <div class="leftPartOfMain">
+                    Place for another views
                 </div>
 
-                <h3>Best Members</h3>
-                <div class="bestMembers">
-                    <a href="#">testUser1</a>
-                    <a href="#">testUser2</a>
-                    <a href="#">testUser3</a>
-                    <a href="#">testUser4</a>
-                    <a href="#">testUser5</a>
+                <div class="rightPartOfMain">
+
+                    <h3>Popular Tags</h3>
+                    <div class="popularTags">
+                        <a href="#" class="tag" style="color: red; font-size:25px">testTag1</a>
+                        <a href="#" class="tag">testTag2</a>
+                        <a href="#" class="tag"style="color: orange; font-size:20px">testTag3</a>
+                        <a href="#" class="tag"style="color: green">testTag4</a>
+                        <a href="#" class="tag" >testTag5</a>
+                        <a href="#" class="tag"style="color: red; font-size:25px">testTag6</a>
+                        <a href="#" class="tag">testTag6</a>
+                        <a href="#" class="tag">testTag6</a>
+                    </div>
+
+                    <h3>Best Members</h3>
+                    <div class="bestMembers">
+                        <a href="#">testUser1</a>
+                        <a href="#">testUser2</a>
+                        <a href="#">testUser3</a>
+                        <a href="#">testUser4</a>
+                        <a href="#">testUser5</a>
+                    </div>
+
                 </div>
-
             </div>
-        </div>
-    </main>
+        </main>
 
-    <footer>
-        Place for footer
-    </footer>
+        <footer>
+            Place for footer
+        </footer>
+
+    </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
 

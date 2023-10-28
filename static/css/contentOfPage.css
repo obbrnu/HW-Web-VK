@@ -1,9 +1,14 @@
-body {
+body{
     display: flex;
     flex-direction: column;
     padding: 0px 20px;
     margin: auto;
     background-color: rgba(128, 128, 128, 0.21);
+}
+
+.container{
+    max-width: 1200px;
+    align-self: center;
 }
 
 main{
@@ -29,6 +34,7 @@ main{
 
 .tag{
     margin: 0px 5px;
+    color: black;
 } 
 
 .pageButton{
