@@ -1,74 +1,24 @@
-<!doctype html>
-<html lang="en">
+{% extends 'layouts/base.html' %}
+{% load static %}
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/headOfPage.css" rel="stylesheet">
-    <link href="css/contentOfPage.css" rel="stylesheet">
-    <link href="css/rightContentOfPage.css" rel="stylesheet">
-    <link href="css/allQuestions.css" rel="stylesheet">
-    <link href="css/oneQuestion.css" rel="stylesheet">
-    <link href="css/questionFormStyle.css" rel="stylesheet">
-    <link href="css/regOrLogFormStyle.css" rel="stylesheet">
-    <link href="css/bottomOfPage.css" rel="stylesheet">
-    <title>question</title>
-</head>
+{% block content %}
 
-<body>
-    
-    <header>
-        <h2><a class="pageName" href="#">AskSomebodyLikeMe</a></h2>
-        <form class="d-flex">
-            <input class="headerSearch me-2" type="search" placeholder="&#128269 Search" aria-label="Search">
-            <button class="headerSearchButton">ASK!</button>
-        </form>
-        <div class="navigationBarAccountPart">
-            <a href="#"><img class="usersImage" src="img/avatarTemp.jpg"></a>
-            <div style="flex-direction: column; margin-left: 10px;">
-                <a class="usersNickname" href="#">Obbrnu</a>
-                <div class="navigationBarAccountButtons">
-                    <a class="accountButtons" href="#" style="margin-right:10px; margin-left:-3px;">Settings</a>
-                    <a class="accountButtons" href="#">Log out</a>
-                </div>
-            </div>
-        </div>
-        <!-- <div class="navigationBarAccountPart">
-            <div class="navigationBarAccountButtons">
-                <a class="accountButtons me-2" href="#" style="margin-right:10px;">Log in</a>
-                <a class="accountButtons" href="#">Register</a>
-            </div>
-        </div> -->
-    </header>
-
-    <main>
-        <div class="mainContent">
-
-            <div class="leftPartOfMain">
-
-
-<!-- TODO: реализовать показ блока на base.htlm -->
-<!-- начало блока -->
-                
-            
                 <div class="listOfAnswersOrQuestions">
                     
                     <div class="contentOfMainQuestion">
                         <div>
                             <div class="imageOfUserMainQuestion">
-                                <a><img class="imageOfUserMainQuestion" src="img/avatarTemp.jpg"></a>
+                                <a><img class="imageOfUserMainQuestion" src="{% static question.authorImage %}"></a>
                             </div>
                             <div class="counterOfLikes" style="margin: 5px 0px;">
-                                <div style="margin:5px;">1</div>
+                                <div style="margin:5px;">{{ question.likesNumber }}</div>
                                 <button class="pageButton">&#8593;</button>
                                 <button class="pageButton" style="margin-left: -7px;">&#8595</button>
                             </div>
                         </div>
                         <div class="infoOfAnswer">
-                            <h4>How can I imagine an example question???</h4>
-                            <p>Well, I need to make an example of page with questions, that's why I need to imagine this questions. But I can't... Help me, PLEASE!</p>
+                            <h4>{{ question.title }}</h4>
+                            <p>{{ question.content }}</p>
                             <div class="bottomOfInfoOfQuestion">
                                 <div class="tagsOfQuestion" style="margin: 0px 5px;">
                                     Tags:
@@ -79,57 +29,16 @@
                         </div>
                     </div>        
 
+<hr>
+                    {% for answer in items %}
+
+                        {% include 'components/answerItem.html' %}
+
+                    {% endfor %}
                     <hr>
+                    {% include 'components/pagination.html' %}
 
-                    <div class="contentOfAnswerOrQuestion">
-                        <div class="imageOfUserAnswerOrQuestionWithCounter">
-                            <div class="imageOfUserAnswerOrQuestion">
-                                <a href="#"><img class="imageOfUserAnswerOrQuestion" src="img/avatarTemp.jpg"></a>
-                            </div>
-                            <div class="counterOfLikes">
-                                <div style="margin:5px;">1</div>
-                                <button class="pageButton">&#8593;</button>
-                                <button class="pageButton" style="margin-left: -7px;">&#8595</button>
-                            </div>
-                        </div>
-                        <div class="infoOfAnswer">
-                            <p>Press f, to pay respect</p>
-                            <div class="bottomOfInfoOfAnswer">
-                                <input type="checkbox" id="checkbox1">
-                                <label for="checkbox1" style="margin-left: 5px;">Correct!</label>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="contentOfAnswerOrQuestion">
-                        <div class="imageOfUserAnswerOrQuestionWithCounter">
-                            <div class="imageOfUserAnswerOrQuestion">
-                                <a href="#"><img class="imageOfUserAnswerOrQuestion" src="img/avatarTemp.jpg"></a>
-                            </div>
-                            <div class="counterOfLikes">
-                                <div style="margin:5px;">12</div>
-                                <button class="pageButton">&#8593;</button>
-                                <button class="pageButton" style="margin-left: -7px;">&#8595</button>
-                            </div>
-                        </div>
-                        <div class="infoOfAnswer">
-                            <p>Omg! That is serius problem! I think you will solve it! Good luck mate :3</p>
-                            <div class="bottomOfInfoOfAnswer">
-                                <input type="checkbox" id="checkbox2">
-                                <label for="checkbox2" style="margin-left: 5px;">Correct!</label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="numberOfPagesWithAnswerOrQuestion">
-                        <button class="pageButton">1</button>
-                        <button class="pageButton">2</button>
-                        <button class="pageButton">3</button>
-                        <button class="pageButton">...</button>
-                        <button class="pageButton">100</button>
-                    </div>
-
-                    <hr>
 
                     <form>
                         <textarea class="formInput" style="width: 100%;" rows="5" maxlength="1000" placeholder="Enter your answer here (max 1000 symbols)"></textarea>
@@ -137,44 +46,4 @@
                     </form>
                 </div>
 
-
-<!-- конец блока  -->
-                
-
-            </div>
-            <div class="rightPartOfMain">
-                
-                <h3>Popular Tags</h3>
-                <div class="popularTags">
-                    <div class="tag" style="color: red; font-size:25px">testTag1</div>
-                    <div class="tag">testTag2</div>
-                    <div class="tag"style="color: orange; font-size:20px">testTag3</div>
-                    <div class="tag"style="color: green">testTag4</div>
-                    <div class="tag" >testTag5</div>
-                    <div class="tag"style="color: red; font-size:25px">testTag6</div>
-                    <div class="tag">testTag6</div>
-                    <div class="tag">testTag6</div>
-                </div>
-
-                <h3>Best Members</h3>
-                <div class="bestMembers">
-                    <a href="#">testUser1</a>
-                    <a href="#">testUser2</a>
-                    <a href="#">testUser3</a>
-                    <a href="#">testUser4</a>
-                    <a href="#">testUser5</a>
-                </div>
-            </div>
-
-        </div>
-    </main>
-
-    <footer>
-
-    </footer>
-
-    <script src="js/bootstrap.bundle.min.js"></script>
-
-</body>
-
-</html>
+{% endblock %}

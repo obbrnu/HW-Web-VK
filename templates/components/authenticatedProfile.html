@@ -1,0 +1,12 @@
+{% load static %}
+
+<div class="navigationBarAccountPart">
+    <a href="#"><img class="usersImage" src="{% static mainUser.image %}"></a>
+    <div style="flex-direction: column; margin-left: 10px;">
+        <a class="usersNickname" href="#">{{ mainUser.nickName }}</a>
+        <div class="navigationBarAccountButtons">
+            <a class="accountButtons" href="#" style="margin-right:10px; margin-left:-3px;">Settings</a>
+            <a class="accountButtons" href="#">Log out</a>
+        </div>
+    </div>
+</div>

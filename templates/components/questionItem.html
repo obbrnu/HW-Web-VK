@@ -1,0 +1,27 @@
+{% load static %}
+
+<div class="contentOfAnswerOrQuestion">
+                            <div class="imageOfUserAnswerOrQuestionWithCounter">
+                                <div class="imageOfUserAnswerOrQuestion">
+                                     <a href="{% url 'question' question_id=question.id %}"><img class="imageOfUserAnswerOrQuestion" src="{% static question.authorImage %}"></a>
+                                </div>
+                                <div class="counterOfLikes">
+                                    <div style="margin:5px;">{{ question.likesNumber }}</div>
+                                    <button class="pageButton">&#8593;</button>
+                                    <button class="pageButton" style="margin-left: -7px;">&#8595;</button>
+                                </div>
+                            </div>
+                            <div class="infoOfQuestion">
+                                <h4><a href="{% url 'question' question_id=question.id %}">{{ question.title }}</a></h4>
+                                <p>{{ question.content }}</p>
+                                <div class="bottomOfInfoOfQuestion">
+                                    <a href="{% url 'question' question_id=question.id %}">Answer ({{ question.answersNumber }})</a>
+                                    <div class="tagsOfQuestion">
+                                        Tags:
+                                        {% for tag in question.tags %}
+                                            <a class="tag" href="#">{{ tag }}</a>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>

@@ -1,0 +1,88 @@
+{% load static %}
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static '/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static '/css/headOfPage.css' %}" rel="stylesheet">
+    <link href="{% static '/css/contentOfPage.css' %}" rel="stylesheet">
+    <link href="{% static '/css/rightContentOfPage.css' %}" rel="stylesheet">
+    <link href="{% static '/css/allQuestions.css' %}" rel="stylesheet">
+    <link href="{% static '/css/oneQuestion.css' %}" rel="stylesheet">
+    <link href="{% static '/css/questionFormStyle.css' %}" rel="stylesheet">
+    <link href="{% static '/css/regOrLogFormStyle.css' %}" rel="stylesheet">
+    <link href="{% static '/css/bottomOfPage.css' %}" rel="stylesheet">
+    <title>base</title>
+</head>
+
+<body>
+    <div class="container">
+
+        <header>
+            <h2><a class="pageName" href="{% url 'index' %}">AskSomebodyLikeMe</a></h2>
+            <form class="d-flex">
+                <input class="headerSearch me-2" type="search" placeholder="&#128269 Search" aria-label="Search">
+                <button class="headerSearchButton" > <a href="{% url 'ask' %}">ASK!</a></button>
+            </form>
+
+<!--TODO: authentication variabe-->
+            {% if mainUser.isAuthenticated %}
+                {% include 'components/authenticatedProfile.html' %}
+            {% else %}
+                {% include 'components/notAuthenticatedProfile.html' %}
+            {% endif %}
+        </header>
+
+        <main>
+            <div class="mainContent">
+
+                <div class="leftPartOfMain">
+                    {% block content %}
+
+                    sth
+
+                    {% endblock %}
+                </div>
+
+                <div class="rightPartOfMain">
+
+                    <h3>Popular Tags</h3>
+                    <div class="popularTags">
+                        <a href="#" class="tag" style="color: red; font-size:25px">testTag1</a>
+                        <a href="#" class="tag">testTag2</a>
+                        <a href="#" class="tag"style="color: orange; font-size:20px">testTag3</a>
+                        <a href="#" class="tag"style="color: green">testTag4</a>
+                        <a href="#" class="tag" >testTag5</a>
+                        <a href="#" class="tag"style="color: red; font-size:25px">testTag6</a>
+                        <a href="#" class="tag">testTag6</a>
+                        <a href="#" class="tag">testTag6</a>
+                    </div>
+
+                    <h3>Best Members</h3>
+                    <div class="bestMembers">
+                        <a href="#">testUser1</a>
+                        <a href="#">testUser2</a>
+                        <a href="#">testUser3</a>
+                        <a href="#">testUser4</a>
+                        <a href="#">testUser5</a>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            Content Of Footer
+        </footer>
+
+    </div>
+
+    <script src="{% static '/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>

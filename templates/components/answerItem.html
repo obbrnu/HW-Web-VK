@@ -1,0 +1,28 @@
+{% load static %}
+
+
+<div class="contentOfAnswerOrQuestion">
+                        <div class="imageOfUserAnswerOrQuestionWithCounter">
+                            <div class="imageOfUserAnswerOrQuestion">
+                                <a href="{% url 'question' question_id=question.id %}"><img class="imageOfUserAnswerOrQuestion" src="{% static answer.authorImage %}"></a>
+                            </div>
+                            <div class="counterOfLikes">
+                                <div style="margin:5px;">{{ answer.likesNumber }}</div>
+                                <button class="pageButton">&#8593;</button>
+                                <button class="pageButton" style="margin-left: -7px;">&#8595</button>
+                            </div>
+                        </div>
+                        <div class="infoOfAnswer">
+                            <p>{{ answer.content }}</p>
+                            <div class="bottomOfInfoOfAnswer">
+                                {% if answer.isCorrect %}
+                                    <input type="checkbox" id="checkbox {{ answer.id }}" checked>
+                                    <label for="checkbox {{ answer.id }}" style="margin-left: 5px;">Correct!</label>
+                                {% else %}
+                                    <input type="checkbox" id="checkbox1 {{ answer.id }}">
+                                    <label for="checkbox1 {{ answer.id }}" style="margin-left: 5px;">Correct!</label>
+                                {% endif %}
+
+                            </div>
+                        </div>
+                    </div>

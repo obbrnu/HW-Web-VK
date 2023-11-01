@@ -1,0 +1,49 @@
+{% load static %}
+
+<div class="numberOfPagesWithAnswerOrQuestion">
+
+    {% if items.number != 1 %}
+        <button class="pageButton">
+            <a href="?page=1">1</a>
+        </button>
+    {% endif %}
+
+    {% if items.number > 4 %}
+        <button class="pageButton">...</button>
+    {% elif items.number == 4 %}
+        <button class="pageButton">
+            <a href="?page=2">2</a>
+        </button>
+    {% endif %}
+
+    {% if items.has_previous and items.previous_page_number != 1 %}
+        <button class="pageButton">
+            <a href="?page={{ items.previous_page_number }}">{{ items.previous_page_number }}</a>
+        </button>
+    {% endif %}
+
+    <button class="pageButton" style = "background-color: lightgray">
+        <a href="{% url 'index' %}">{{ items.number }}</a>
+    </button>
+
+    {% if items.has_next and items.next_page_number != items.paginator.num_pages %}
+        <button class="pageButton">
+            <a href="?page={{ items.next_page_number }}">{{ items.next_page_number }}</a>
+        </button>
+    {% endif %}
+
+    {% if items.number < items.paginator.num_pages|add:-3 %}
+        <button class="pageButton">...</button>
+    {% elif items.number == items.paginator.num_pages|add:-3 %}
+        <button class="pageButton">
+            <a href="?page={{ items.paginator.num_pages|add:-1 }}">{{ items.paginator.num_pages|add:-1 }}</a>
+        </button>
+    {% endif %}
+
+    {% if items.number != items.paginator.num_pages %}
+        <button class="pageButton">
+            <a href="?page={{ items.paginator.num_pages }}">{{ items.paginator.num_pages }}</a>
+        </button>
+    {% endif %}
+
+</div>
