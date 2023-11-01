@@ -3,47 +3,46 @@
 
 {% block content %}
 
-                <div class="listOfAnswersOrQuestions">
-                    
-                    <div class="contentOfMainQuestion">
-                        <div>
-                            <div class="imageOfUserMainQuestion">
-                                <a><img class="imageOfUserMainQuestion" src="{% static question.authorImage %}"></a>
-                            </div>
-                            <div class="counterOfLikes" style="margin: 5px 0px;">
-                                <div style="margin:5px;">{{ question.likesNumber }}</div>
-                                <button class="pageButton">&#8593;</button>
-                                <button class="pageButton" style="margin-left: -7px;">&#8595</button>
-                            </div>
-                        </div>
-                        <div class="infoOfAnswer">
-                            <h4>{{ question.title }}</h4>
-                            <p>{{ question.content }}</p>
-                            <div class="bottomOfInfoOfQuestion">
-                                <div class="tagsOfQuestion" style="margin: 0px 5px;">
-                                    Tags:
-                                    <a class="tag" href="#">testTag1</a>
-                                    <a class="tag" href="#">testTag2</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>        
+<div class="listOfAnswersOrQuestions">
 
-<hr>
-                    {% for answer in items %}
-
-                        {% include 'components/answerItem.html' %}
-
-                    {% endfor %}
-                    <hr>
-                    {% include 'components/pagination.html' %}
-
-
-
-                    <form>
-                        <textarea class="formInput" style="width: 100%;" rows="5" maxlength="1000" placeholder="Enter your answer here (max 1000 symbols)"></textarea>
-                        <button class="pageButton" style="width: 100px;">Answer</button>
-                    </form>
+    <div class="contentOfMainQuestion">
+        <div>
+            <div class="imageOfUserMainQuestion">
+                <a><img class="imageOfUserMainQuestion" src="{% static question.authorImage %}"></a>
+            </div>
+            <div class="counterOfLikes" style="margin: 5px 0px;">
+                <div style="margin:5px;">{{ question.likesNumber }}</div>
+                <button class="pageButton">&#8593;</button>
+                <button class="pageButton" style="margin-left: -7px;">&#8595</button>
+            </div>
+        </div>
+        <div class="infoOfAnswer">
+            <h4>{{ question.title }}</h4>
+            <p>{{ question.content }}</p>
+            <div class="bottomOfInfoOfQuestion">
+                <div class="tagsOfQuestion" style="margin: 0px 5px;">
+                    Tags:
+                    <a class="tag" href="#">testTag1</a>
+                    <a class="tag" href="#">testTag2</a>
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <hr>
+
+    {% for answer in items %}
+        {% include 'components/answerItem.html' %}
+    {% endfor %}
+
+    <hr>
+
+    {% include 'components/pagination.html' %}
+
+    <form>
+        <textarea class="formInput" style="width: 100%;" rows="5" maxlength="1000" placeholder="Enter your answer here (max 1000 symbols)"></textarea>
+        <button class="pageButton" style="width: 100px;">Answer</button>
+    </form>
+</div>
 
 {% endblock %}

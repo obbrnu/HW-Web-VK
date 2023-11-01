@@ -2,31 +2,30 @@
 
 {% block content %}
 
-                <form class="listOfRegFormGroups">
+<form class="listOfRegFormGroups">
+    <h2>Log in</h2>
+    <p class="regFormError">Sorry, something wrong!</p>
 
-                    <h2>Log in</h2>
-                    <p class="regFormError">Sorry, something wrong!</p>
+    <div class="regFormGroups">
+        <label class="regFormLabel" for="login">Login</label>
+        <input id="login" class="regFormInput" maxlength="50" placeholder="login" required>
+    </div>
 
-                    <div class="regFormGroups">
-                        <label class="regFormLabel" for="login">Login</label>
-                        <input id="login" class="regFormInput" maxlength="50" placeholder="login" required>
-                    </div>
+    <div class="regFormGroups">
+        <label class="regFormLabel" for="password">Password</label>
+        <input id="password" class="regFormInput" maxlength="50" placeholder="password" required type="password" >
+    </div>
 
-                    <div class="regFormGroups">
-                        <label class="regFormLabel" for="password">Password</label>
-                        <input id="password" class="regFormInput" maxlength="50" placeholder="password" required type="password" >
-                    </div>
+    <div class="regFormGroups">
+        <label class="regFormLabel"></label>
+        <button class="pageButton"  style="margin: 0px; width: 250px;">Log in</button>
+    </div>
 
-                    <div class="regFormGroups">
-                        <label class="regFormLabel"></label>
-                        <button class="pageButton"  style="margin: 0px; width: 250px;">Log in</button>
-                    </div>
+    <div class="regFormGroups">
+        <label class="regFormLabel"></label>
+        <a href="{% url 'signup'%}">Create new account</a>
+    </div>
 
-                    <div class="regFormGroups">
-                        <label class="regFormLabel"></label>
-                        <a href="{% url 'signup'%}">Create new account</a>
-                    </div>
-
-                </form>
+</form>
 
 {% endblock %}

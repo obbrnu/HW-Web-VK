@@ -3,23 +3,20 @@
 
 {% block content %}
 
-                <div class="listOfAnswersOrQuestions">
+<div class="listOfAnswersOrQuestions">
+     <div class="headerOfListOfQuestions">
+         <h2>New Questions</h2>
+         <a href="#" style="margin: 10px;">Hot Questions</a>
+     </div>
 
-                     <div class="headerOfListOfQuestions">
-                        <h2>New Questions</h2>
-                        <a href="#" style="margin: 10px;">Hot Questions</a>
-                    </div>
+    {% for question in items %}
 
-                    {% for question in items %}
+        {% include 'components/questionItem.html' %}
 
-                        {% include 'components/questionItem.html' %}
+    {% endfor %}
 
-                    {% endfor %}
+    {% include 'components/pagination.html' %}
 
-                    {% include 'components/pagination.html' %}
+</div>
 
-                </div>
-                
-                
-<!-- конец блока  -->
 {% endblock %}
