@@ -4,16 +4,16 @@
 <div class="contentOfAnswerOrQuestion">
     <div class="imageOfUserAnswerOrQuestionWithCounter">
         <div class="imageOfUserAnswerOrQuestion">
-            <a href="{% url 'question' question_id=question.id %}"><img class="imageOfUserAnswerOrQuestion" src="{% static answer.authorImage %}"></a>
+            <a href="{% url 'question' question_id=question.id %}"><img class="imageOfUserAnswerOrQuestion" src="{% static answer.author.avatar.url %}"></a>
         </div>
         <div class="counterOfLikes">
-            <div style="margin:5px;">{{ answer.likesNumber }}</div>
+            <div style="margin:5px;">{{ answer.rating }}</div>
             <button class="pageButton">&#8593;</button>
             <button class="pageButton" style="margin-left: -7px;">&#8595</button>
         </div>
     </div>
     <div class="infoOfAnswer">
-        <p>{{ answer.content }}</p>
+        <p>{{ answer.text }}</p>
         <div class="bottomOfInfoOfAnswer">
             {% if answer.isCorrect %}
                 <input type="checkbox" id="checkbox {{ answer.id }}" checked>
