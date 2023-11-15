@@ -23,7 +23,7 @@ class Command(BaseCommand):
         userList = []
         profileList = []
         for i in range(numberOfUsers):
-            userTmp = User(username = 'test91' + str(i) + fake.first_name(), password = 'FirstPass1')
+            userTmp = User(username =str(i) + ' ' + fake.first_name(), password = 'FirstPass1')
             profileTmp = Profile(user = userTmp)
             userList.append(userTmp)
             profileList.append(profileTmp)
@@ -32,15 +32,15 @@ class Command(BaseCommand):
 
         tagList = [
             Tag(
-                text = 'test91' + 'tag' + fake.text(max_nb_chars = 8)
+                text=str(i) + 'tags' + fake.text(max_nb_chars=5)
             ) for i in range(numberOfTags)
         ]
         Tag.objects.bulk_create(tagList)
 
         for i in range(numberOfQuestions):
             profile = Profile.objects.get(id=Profile.objects.first().id + randint(0, numberOfUsers - 1))
-            question = Question(title='test11' + fake.text(max_nb_chars = 5 + i % 5),
-                                text='test11' + fake.text(max_nb_chars = 20 + i % 50),
+            question = Question(title=fake.text(max_nb_chars = 10 + i % 15),
+                                text=fake.text(max_nb_chars = 20 + i % 50),
                                 author=profile,
                                 date=fake.date(),
                                 rating = 0)
@@ -52,7 +52,7 @@ class Command(BaseCommand):
             for j in range(10):
                 profile = Profile.objects.get(id=Profile.objects.first().id + randint(0, numberOfUsers - 1))
                 a = Answer(relatedQuestion = question,
-                           text='test11' + fake.text(max_nb_chars = 5 + i % 5),
+                           text=fake.text(max_nb_chars = 20 + i % 50),
                            author=profile,
                            date=fake.date(),
                            rating=0,
