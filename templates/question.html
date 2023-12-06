@@ -41,6 +41,7 @@
     {% include 'components/pagination.html' %}
 
     <form method="post">
+            {% csrf_token %}
         {{ form }}
 <!--        <textarea class="formInput" style="width: 100%;" rows="5" maxlength="1000" placeholder="Enter your answer here (max 1000 symbols)"></textarea>-->
         <button class="pageButton" style="width: 100px;">Answer</button>

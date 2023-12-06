@@ -6,7 +6,7 @@
 
 <form method="post" class="listOfRegFormGroups">
     <h2>Profile Settings</h2>
-
+    {% csrf_token %}
      {{ form }}
 
         <div class="regFormGroups">

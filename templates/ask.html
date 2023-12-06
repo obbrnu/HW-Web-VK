@@ -3,6 +3,7 @@
 {% block content %}
 
 <form method="post" class="listOfFormGroups">
+        {% csrf_token %}
     <h2>New Question</h2>
     {{ form }}
 <!--    <div class="formGroups">-->
