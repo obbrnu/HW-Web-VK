@@ -40,8 +40,9 @@
 
     {% include 'components/pagination.html' %}
 
-    <form>
-        <textarea class="formInput" style="width: 100%;" rows="5" maxlength="1000" placeholder="Enter your answer here (max 1000 symbols)"></textarea>
+    <form method="post">
+        {{ form }}
+<!--        <textarea class="formInput" style="width: 100%;" rows="5" maxlength="1000" placeholder="Enter your answer here (max 1000 symbols)"></textarea>-->
         <button class="pageButton" style="width: 100px;">Answer</button>
     </form>
 </div>

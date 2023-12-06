@@ -2,26 +2,26 @@
 
 {% block content %}
 
-<form class="listOfFormGroups">
+<form method="post" class="listOfFormGroups">
     <h2>New Question</h2>
+    {{ form }}
+<!--    <div class="formGroups">-->
+<!--        <label class="formLabel" for="enterQuestion">Title</label>-->
+<!--        <input id="enterQuestion" class="formInput" maxlength="50" placeholder="Enter your question (max 50 symbols)">-->
+<!--    </div>-->
+<!--    <p class="formError">Title isn't correct</p>-->
 
-    <div class="formGroups">
-        <label class="formLabel" for="enterQuestion">Title</label>
-        <input id="enterQuestion" class="formInput" maxlength="50" placeholder="Enter your question (max 50 symbols)">
-    </div>
-    <p class="formError">Title isn't correct</p>
+<!--    <div class="formGroups">-->
+<!--        <label class="formLabel" for="enterComment">Text </label>-->
+<!--        <textarea id="enterComment" class="formInput" rows="10" maxlength="1000" placeholder="Enter your comment (max 1000 symbols)"></textarea>-->
+<!--    </div>-->
+<!--    <p class="formError">Text isn't correct</p>-->
 
-    <div class="formGroups">
-        <label class="formLabel" for="enterComment">Text </label>
-        <textarea id="enterComment" class="formInput" rows="10" maxlength="1000" placeholder="Enter your comment (max 1000 symbols)"></textarea>
-    </div>
-    <p class="formError">Text isn't correct</p>
-
-    <div class="formGroups">
-        <label class="formLabel" for="tagsList">Tags</label>
-        <input id="tagsList" class="formInput" placeholder="ExampleTag">
-    </div>
-    <p class="formError">Tags aren't correct</p>
+<!--    <div class="formGroups">-->
+<!--        <label class="formLabel" for="tagsList">Tags</label>-->
+<!--        <input id="tagsList" class="formInput" placeholder="ExampleTag">-->
+<!--    </div>-->
+<!--    <p class="formError">Tags aren't correct</p>-->
 
     <div class="formGroups">
         <label class="formLabel"></label>

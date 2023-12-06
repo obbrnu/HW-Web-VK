@@ -23,7 +23,8 @@ class Command(BaseCommand):
         userList = []
         profileList = []
         for i in range(numberOfUsers):
-            userTmp = User(username =str(i) + ' ' + fake.first_name(), password = 'FirstPass1')
+            userTmp = User(username =str(i) + ' ' + fake.first_name(),
+                           password = 'FirstPass1')
             profileTmp = Profile(user = userTmp)
             userList.append(userTmp)
             profileList.append(profileTmp)
@@ -63,10 +64,14 @@ class Command(BaseCommand):
             question = Question.objects.get(id=Question.objects.first().id + randint(0, numberOfQuestions - 1))
             profile = Profile.objects.get(id=Profile.objects.first().id + randint(0, numberOfUsers - 1))
             like = random.choice([True, False])
-            questionLike = QuestionLike(relatedQuestion=question, user=profile, like=like)
+            questionLike = QuestionLike(relatedQuestion=question,
+                                        user=profile,
+                                        like=like)
             questionLike.save()
             answer = Answer.objects.get(id=Answer.objects.first().id + randint(0, numberOfAnswers - 1))
             profile = Profile.objects.get(id=Profile.objects.first().id + randint(0, numberOfUsers - 1))
             like = random.choice([True, False])
-            answerLike = AnswerLike(relatedAnswer=answer, user=profile, like=like)
+            answerLike = AnswerLike(relatedAnswer=answer,
+                                    user=profile,
+                                    like=like)
             answerLike.save()

@@ -2,41 +2,42 @@
 
 {% block content %}
 
-<form class="listOfRegFormGroups">
+<form method="post" class="listOfRegFormGroups">
     <h2>Register</h2>
-    <p class="regFormError">Sorry, something wrong!</p>
+     {{ form }}
+<!--    <p class="regFormError">Sorry, something wrong!</p>-->
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="login">Login</label>
-        <input id="login" class="regFormInput" maxlength="50" placeholder="login"required>
-    </div>
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="login">Login</label>-->
+<!--        <input id="login" class="regFormInput" maxlength="50" placeholder="login"required>-->
+<!--    </div>-->
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="email">Email</label>
-        <input id="email" class="regFormInput" maxlength="50" placeholder="email@email.com"required type="email">
-    </div>
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="email">Email</label>-->
+<!--        <input id="email" class="regFormInput" maxlength="50" placeholder="email@email.com"required type="email">-->
+<!--    </div>-->
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="nickname">NickName</label>
-        <input id="nickname" class="regFormInput" maxlength="50" placeholder="nickname" required>
-    </div>
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="nickname">NickName</label>-->
+<!--        <input id="nickname" class="regFormInput" maxlength="50" placeholder="nickname" required>-->
+<!--    </div>-->
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="password">Password</label>
-        <input id="password" class="regFormInput" maxlength="50" placeholder="password" required type="password">
-    </div>
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="password">Password</label>-->
+<!--        <input id="password" class="regFormInput" maxlength="50" placeholder="password" required type="password">-->
+<!--    </div>-->
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="repeatingPassword">Repeat Password</label>
-        <input id="repeatingPassword" class="regFormInput" maxlength="50" placeholder="password"required type="password">
-    </div>
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="repeatingPassword">Repeat Password</label>-->
+<!--        <input id="repeatingPassword" class="regFormInput" maxlength="50" placeholder="password"required type="password">-->
+<!--    </div>-->
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="avatarPath">Upload avatar</label>
-        <input id="avatarPath" class="regFormInput" style="width: 160px;" placeholder="/path">
-        <button class="pageButton" style="width: 90px;">Choose file</button>
-    </div>
-                        
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="avatarPath">Upload avatar</label>-->
+<!--        <input id="avatarPath" class="regFormInput" style="width: 160px;" placeholder="/path">-->
+<!--        <button class="pageButton" style="width: 90px;">Choose file</button>-->
+<!--    </div>-->
+<!--                        -->
     <div class="regFormGroups">
         <label class="regFormLabel"></label>
         <button class="pageButton"  style="margin: 0px; width: 250px;">Register</button>

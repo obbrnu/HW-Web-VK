@@ -2,19 +2,21 @@
 
 {% block content %}
 
-<form class="listOfRegFormGroups">
-    <h2>Log in</h2>
-    <p class="regFormError">Sorry, something wrong!</p>
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="login">Login</label>
-        <input id="login" class="regFormInput" maxlength="50" placeholder="login" required>
-    </div>
+<form method="post" class="listOfRegFormGroups">
+        <h2>Log in</h2>
+<!--    {% csrf_token %}-->
+<!--    <p class="regFormError">Sorry, something wrong!</p>-->
+{{ form }}
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="login">Username</label>-->
+<!--        <input id="login" class="regFormInput" name="username" maxlength="50" placeholder="login" required>-->
+<!--    </div>-->
 
-    <div class="regFormGroups">
-        <label class="regFormLabel" for="password">Password</label>
-        <input id="password" class="regFormInput" maxlength="50" placeholder="password" required type="password" >
-    </div>
+<!--    <div class="regFormGroups">-->
+<!--        <label class="regFormLabel" for="password">Password</label>-->
+<!--        <input id="password" class="regFormInput" name="password" maxlength="50" placeholder="password" required type="password" >-->
+<!--    </div>-->
 
     <div class="regFormGroups">
         <label class="regFormLabel"></label>
@@ -25,7 +27,6 @@
         <label class="regFormLabel"></label>
         <a href="{% url 'signup'%}">Create new account</a>
     </div>
-
 </form>
 
 {% endblock %}

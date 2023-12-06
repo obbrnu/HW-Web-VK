@@ -30,7 +30,7 @@
             </form>
 
 <!--TODO: authentication variabe-->
-            {% if mainUser.isAuthenticated %}
+            {% if user.is_authenticated %}
                 {% include 'components/authenticatedProfile.html' %}
             {% else %}
                 {% include 'components/notAuthenticatedProfile.html' %}

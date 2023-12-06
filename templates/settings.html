@@ -1,0 +1,24 @@
+{% extends 'layouts/base.html' %}
+
+{% load static %}
+
+{% block content%}
+
+<form method="post" class="listOfRegFormGroups">
+    <h2>Profile Settings</h2>
+
+     {{ form }}
+
+        <div class="regFormGroups">
+        <label class="regFormLabel" for="avatarPath">Upload avatar</label>
+        <input id="avatarPath" class="regFormInput" style="width: 160px;" placeholder="/path">
+        <button class="pageButton" style="width: 90px;">Choose file</button>
+    </div>
+
+    <div class="regFormGroups">
+        <label class="regFormLabel"></label>
+        <button class="pageButton"  style="margin: 0px; width: 250px;">Save changes</button>
+    </div>
+</form>
+
+{% endblock %}
