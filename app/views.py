@@ -53,27 +53,31 @@ def paginate(objects, page, per_page=5):
 
 # Create your views here.
 def base(request):
-    return render(request, 'base.html')
+    return render(request, 'base.html', )
 
 
 def settings(request):
-    return render(request, 'settings.html')
+    ts = Tag.objects.amountFilter()[:7]
+    return render(request, 'settings.html',{'tags': ts})
 
 
 @login_required(login_url = 'login', redirect_field_name='continue')
 def index(request):
     page = request.GET.get('page', 1)
     q = Question.objects.dateFilter()
-    return render(request, 'index.html', {'items': paginate(q, page)})
+    ts = Tag.objects.amountFilter()[:7]
+    return render(request, 'index.html', {'items': paginate(q, page), 'tags': ts})
 
 
 def hot(request):
     page = request.GET.get('page', 1)
     q = Question.objects.ratingFilter()
-    return render(request, 'indexHot.html', {'items': paginate(q, page)})
+    ts = Tag.objects.amountFilter()[:7]
+    return render(request, 'indexHot.html', {'items': paginate(q, page),'tags': ts})
 
 
 def question(request, question_id):
+    ts = Tag.objects.amountFilter()[:7]
     try:
         # q = Question.objects.dateFilter()[question_id - Question.objects.dateFilter()[0].id]
         q = Question.objects.all()[question_id - 1]
@@ -94,20 +98,22 @@ def question(request, question_id):
             answer_form.clean()
     except:
         return HttpResponse(status=404)
-    return render(request, 'question.html', {'question': q, 'items': paginate(a, page), 'form': answer_form})
+    return render(request, 'question.html', {'question': q, 'items': paginate(a, page), 'form': answer_form, 'tags': ts})
 
 
 def tag(request, s: str):
+    ts = Tag.objects.amountFilter()[:7]
     try:
         t = Tag.objects.get(text=s)
     except:
         return HttpResponse(status=404)
     q = Question.objects.tagFilter(t)
     page = request.GET.get('page', 1)
-    return render(request, 'tag.html', {'tag': t, 'items': paginate(q, page)})
+    return render(request, 'tag.html', {'tag': t, 'items': paginate(q, page), 'tags': ts})
 
 
 def ask(request):
+    ts = Tag.objects.amountFilter()[:7]
     if request.method == "GET":
         question_form = QuestionForm()
     if request.method == "POST":
@@ -123,15 +129,19 @@ def ask(request):
             q.save()
             for tag in ttags:
                 t = Tag.objects.get(id=tag.id)
+
+                t.amount += 1
+                t.save()
                 q.tags.add(t)
                 q.save()
             if q:
                 print("Succesfully ask")
                 return redirect(f'/question/{q.id}')
-    return render(request, "ask.html", {"form": question_form})
+    return render(request, "ask.html", {"form": question_form, 'tags': ts})
 
 
 def log_in(request):
+    ts = Tag.objects.amountFilter()[:7]
     print(request.GET)
     print(request.POST)
     if request.method == "GET":
@@ -145,7 +155,7 @@ def log_in(request):
                 login(request, user)
                 print("Succesfully logged in")
                 return redirect(reverse('index'))
-    return render(request, 'login.html', context={"form": login_form})
+    return render(request, 'login.html', context={"form": login_form,'tags': ts})
 
 
 def log_out(request):
@@ -154,6 +164,7 @@ def log_out(request):
 
 
 def signup(request):
+    ts = Tag.objects.amountFilter()[:7]
     print(request.GET)
     print(request.POST)
     if request.method == "GET":
@@ -171,10 +182,11 @@ def signup(request):
                 p.save()
                 print("Succesfully reg")
                 return redirect(reverse("index"))
-    return render(request, "signup.html", {"form": reg_form})
+    return render(request, "signup.html", {"form": reg_form,'tags': ts})
 
 @login_required()
 def settings(request):
+    ts = Tag.objects.amountFilter()[:7]
     if request.method == "GET":
         user_form = SettingsForm(initial={"username": request.user.username, "email": request.user.email})
     if request.method == "POST":
@@ -192,4 +204,4 @@ def settings(request):
                     user.set_password(password)
                 user.email = email
                 user.save()
-    return render(request, "settings.html", {"form": user_form})
+    return render(request, "settings.html", {"form": user_form,'tags': ts})

@@ -12,10 +12,16 @@ class Profile(models.Model):
         return f"{self.user.username}"
 
 
+class TagManager(models.Manager):
+    def amountFilter(self):
+        return self.order_by('-amount')
+
+
 class Tag(models.Model):
     text = models.CharField(max_length=20, default="all", unique=True)
+    amount = models.IntegerField(default=0)
 
-    objects = models.Manager()
+    objects = TagManager()
 
     def __str__(self) -> str:
         return f"{self.text}"

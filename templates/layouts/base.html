@@ -52,14 +52,11 @@
 
                     <h3>Popular Tags</h3>
                     <div class="popularTags">
-                        <a href="#" class="tag" style="color: red; font-size:25px">testTag1</a>
-                        <a href="#" class="tag">testTag2</a>
-                        <a href="#" class="tag"style="color: orange; font-size:20px">testTag3</a>
-                        <a href="#" class="tag"style="color: green">testTag4</a>
-                        <a href="#" class="tag" >testTag5</a>
-                        <a href="#" class="tag"style="color: red; font-size:25px">testTag6</a>
-                        <a href="#" class="tag">testTag6</a>
-                        <a href="#" class="tag">testTag6</a>
+                    {% for t in tags %}
+
+                            <a href="{% url 'tag' s=t.text %}" class="tag" style="color: rgb(255 0 153); font-size:25px"> {{ t.text }} </a>
+
+                    {% endfor %}
                     </div>
 
                     <h3>Best Members</h3>
