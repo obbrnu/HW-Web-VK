@@ -98,6 +98,9 @@ class QuestionLike(models.Model):
     user = models.ForeignKey(Profile, models.CASCADE)
     like = models.BooleanField(blank=True, default=False)
 
+    class Meta:
+        unique_together = ('relatedQuestion', 'user')
+
     def __str__(self) -> str:
         return f'{self.user.user.username} likes question {self.like}'
 
@@ -107,5 +110,7 @@ class AnswerLike(models.Model):
     user = models.ForeignKey(Profile, models.CASCADE)
     like = models.BooleanField(blank=True, default=False)
 
+    class Meta:
+        unique_together = ('relatedAnswer', 'user')
     def __str__(self) -> str:
         return f'{self.user.user.username} likes answer {self.like}'

@@ -1,3 +1,5 @@
+import math
+
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
@@ -61,7 +63,6 @@ def settings(request):
     return render(request, 'settings.html',{'tags': ts})
 
 
-@login_required(login_url = 'login', redirect_field_name='continue')
 def index(request):
     page = request.GET.get('page', 1)
     q = Question.objects.dateFilter()
@@ -82,7 +83,7 @@ def question(request, question_id):
         # q = Question.objects.dateFilter()[question_id - Question.objects.dateFilter()[0].id]
         q = Question.objects.all()[question_id - 1]
         a = q.answers.all()
-        page = request.GET.get('page', 1)
+        page = request.GET.get('page',1)
         print(request.GET)
         print(request.POST)
         if request.method == "GET":
@@ -96,9 +97,10 @@ def question(request, question_id):
                 ans = Answer(relatedQuestion=q, text=text, author=author, date=date, rating=0, correct=False)
                 ans.save()
             answer_form.clean()
+            return render(request, 'question.html', {'question': q, 'items': paginate(a, math.ceil((a.count()+1)/5)), 'form': answer_form, 'tags': ts})
     except:
         return HttpResponse(status=404)
-    return render(request, 'question.html', {'question': q, 'items': paginate(a, page), 'form': answer_form, 'tags': ts})
+    return render(request, f'question.html', {'question': q, 'items': paginate(a, page), 'form': answer_form, 'tags': ts})
 
 
 def tag(request, s: str):
@@ -112,6 +114,7 @@ def tag(request, s: str):
     return render(request, 'tag.html', {'tag': t, 'items': paginate(q, page), 'tags': ts})
 
 
+@login_required(login_url = 'login', redirect_field_name='continue')
 def ask(request):
     ts = Tag.objects.amountFilter()[:7]
     if request.method == "GET":
