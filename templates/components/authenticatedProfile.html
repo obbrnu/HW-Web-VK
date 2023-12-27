@@ -1,7 +1,7 @@
 {% load static %}
 
 <div class="navigationBarAccountPart">
-    <a href="#"><img class="usersImage" src="{% static 'img/avatarTemp.jpg' %}"></a>
+    <a href="#"><img class="usersImage" src="{{ request.user.profile.avatar.url }}"></a>
     <div style="flex-direction: column; margin-left: 10px;">
         <a class="usersNickname" href="#">{{ user.username }}</a>
         <div class="navigationBarAccountButtons">

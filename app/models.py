@@ -7,7 +7,7 @@ import datetime
 
 class Profile(models.Model):
     user = models.OneToOneField(User, models.CASCADE)
-    avatar = models.ImageField(default='img/avatarTemp.jpg')
+    avatar = models.ImageField(default='./uploads/avatarTemp.jpg', upload_to = 'avatar/%Y/%m/%d/')
     def __str__(self):
         return f"{self.user.username}"
 

@@ -71,26 +71,45 @@ class AnswerForm(forms.ModelForm):
         return data
 
 
-class SettingsForm(forms.ModelForm):
-    nickname = forms.CharField()
-    avatar = forms.ImageField()
-
-    def clean_nickname(self):
-        nickname = self.cleaned_data['nickname']
-        if nickname.strip() == '':
-            raise forms.ValidationError('Nickname is empty', code='validation_error')
-        return nickname
+class SettingsForm(forms.Form):
+    username = forms.CharField(max_length = 50, required=False)
+    email = forms.CharField(max_length = 50, required=False, widget=forms.EmailInput())
+    password0 = forms.CharField(max_length = 50, label='Old Password', widget=forms.PasswordInput(), required=False)
+    password = forms.CharField(max_length = 50, label='New Password', widget=forms.PasswordInput(), required=False)
+    password2 = forms.CharField(max_length = 50, label='Repeat New Password', widget=forms.PasswordInput(), required=False)
+    avatar = forms.ImageField(required=False)
 
     class Meta:
         model = User
-        fields = ['nickname', 'email', 'avatar']
+        fields = ["username", "email", "password0", "password", "password2"]
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def saveAvatar(self, **kwargs):
+        user = super().save(**kwargs)
+        profile = user.profile
+        profile.avatar = self.cleaned_data['avatar']
+        profile.save()
 
-    def save(self, commit=True):
-        self.user.profile.nickname = self.cleaned_data.get('nickname')
-        self.user.profile.avatar = self.cleaned_data.get('avatar')
-        if commit:
-            self.user.profile.save()
-        return self.user
+        return user
+
+    def clean_username(self):
+        data = self.cleaned_data['username']
+        dataPassword = self.data['password0']
+        if User.objects.filter(username=data).exists() and not authenticate(username=data,password=dataPassword):
+            raise forms.ValidationError("This username is already used")
+        return data
+
+    def clean_password0(self):
+        dataPassword = self.cleaned_data['password0']
+        return dataPassword
+
+    def clean_password(self):
+        dataPassword = self.cleaned_data['password']
+        if 0 < len(dataPassword) and len(dataPassword) < 3:
+            raise ValidationError("Password must be longer than 3 symlols")
+        return dataPassword
+
+    def clean_password2(self):
+        dataPassword = self.data['password']
+        dataPassword2 = self.cleaned_data['password2']
+        if dataPassword != dataPassword2:
+            raise ValidationError("Passwords do not match")

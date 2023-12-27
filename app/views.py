@@ -181,7 +181,7 @@ def signup(request):
             # user = authenticate(username=username, password=password)
             if user:
                 login(request, user)
-                p = Profile(user=user, avatar='img/avatarTemp.jpg')
+                p = Profile(user=user, avatar='avatarTemp.jpg')
                 p.save()
                 print("Succesfully reg")
                 return redirect(reverse("index"))
@@ -193,7 +193,7 @@ def settings(request):
     if request.method == "GET":
         user_form = SettingsForm(initial={"username": request.user.username, "email": request.user.email})
     if request.method == "POST":
-        user_form = SettingsForm(request.POST)
+        user_form = SettingsForm(request.POST, request.FILES)
         if user_form.is_valid():
             username = user_form.cleaned_data['username']
             password0 = user_form.cleaned_data['password0']
@@ -207,4 +207,10 @@ def settings(request):
                     user.set_password(password)
                 user.email = email
                 user.save()
+                profile = user.profile
+                avatar = user_form.cleaned_data['avatar']
+                if avatar:
+                    profile.avatar = avatar
+                    profile.save()
+            return redirect(reverse("settings"))
     return render(request, "settings.html", {"form": user_form,'tags': ts})

@@ -4,7 +4,7 @@
 
 {% block content%}
 
-<form method="post" class="listOfRegFormGroups">
+<form method="post" class="listOfRegFormGroups" enctype="multipart/form-data">
     <h2>Profile Settings</h2>
     {% csrf_token %}
      {{ form }}
@@ -14,7 +14,7 @@
 <!--        <input id="avatarPath" class="regFormInput" style="width: 160px;" placeholder="/path">-->
 <!--        <button class="pageButton" style="width: 90px;">Choose file</button>-->
 <!--    </div>-->
-
+    <img src="{{ request.user.profile.avatar.url }}" alt="Profile image">
     <div class="regFormGroups">
         <label class="regFormLabel"></label>
         <button class="pageButton"  style="margin: 0px; width: 250px;">Save changes</button>

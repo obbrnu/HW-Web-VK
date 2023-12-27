@@ -18,7 +18,10 @@ from django.contrib import admin
 from django.urls import path
 from app import views
 
-urlpatterns = [
+from django.conf.urls.static import static
+from django.conf import settings
+
+urlpatterns = ([
     path('', views.index, name= 'index'),
     path('hot/', views.hot, name='hot'),
     path('question/<int:question_id>', views.question, name='question'),
@@ -29,4 +32,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('logout/', views.log_out, name = "logout"),
     path('profile/edit/', views.settings, name = "settings"),
-]
+])
+
+urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)
