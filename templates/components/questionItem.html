@@ -5,11 +5,18 @@
         <div class="imageOfUserAnswerOrQuestion">
             <a href="{% url 'question' question_id=question.id %}"><img class="imageOfUserAnswerOrQuestion" src="{% static question.author.avatar.url %}"></a>
         </div>
-        <div class="counterOfLikes">
-            <div style="margin:5px;">{{ question.rating }}</div>
-            <button type="button" class="pageButton" onclick="question.ratingUp()">&#8593;</button>
-            <button class="pageButton" style="margin-left: -7px;">&#8595;</button>
-        </div>
+        {% if user.is_authenticated %}
+            {% csrf_token %}
+            <div class="counterOfLikes" data-id = "{{ question.id }}">
+                <div style="margin:5px;">{{ question.rating }}</div>
+                <button type="button" class="btn-like">&#8593;</button>
+                <button class="btn-like" style="margin-left: -7px;">&#8595;</button>
+            </div>
+        {% else %}
+            <div class="counterOfLikes" data-id = "{{ question.id }}">
+                <div style="margin:5px;">{{ question.rating }}</div>
+            </div>
+        {% endif %}
     </div>
     <div class="infoOfQuestion">
         <h4><a href="{% url 'question' question_id=question.id %}">{{ question.title }}</a></h4>

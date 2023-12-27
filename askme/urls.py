@@ -32,6 +32,8 @@ urlpatterns = ([
     path('admin/', admin.site.urls),
     path('logout/', views.log_out, name = "logout"),
     path('profile/edit/', views.settings, name = "settings"),
+    path('likes/', views.likes, name = "likes"),
+    path('dislikes/', views.dislikes, name = "dislikes"),
 ])
 
 urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT) + static(settings.STATIC_URL, document_root = settings.STATIC_ROOT)

@@ -15,12 +15,20 @@
     <div class="infoOfAnswer">
         <p>{{ answer.text }}</p>
         <div class="bottomOfInfoOfAnswer">
-            {% if answer.isCorrect %}
-                <input type="checkbox" id="checkbox {{ answer.id }}" checked>
-                <label for="checkbox {{ answer.id }}" style="margin-left: 5px;">Correct!</label>
+            {% if question.author.id == user.id %}
+                {% if answer.isCorrect %}
+                    <input type="checkbox" id="checkbox {{ answer.id }}" checked>
+                    <label for="checkbox {{ answer.id }}" style="margin-left: 5px;">Correct!</label>
+                {% else %}
+                    <input type="checkbox" id="checkbox1 {{ answer.id }}">
+                    <label for="checkbox1 {{ answer.id }}" style="margin-left: 5px;">Correct!</label>
+                {% endif %}
             {% else %}
-                <input type="checkbox" id="checkbox1 {{ answer.id }}">
-                <label for="checkbox1 {{ answer.id }}" style="margin-left: 5px;">Correct!</label>
+                {% if answer.isCorrect %}
+                    <label for="checkbox {{ answer.id }}" style="margin-left: 5px;">Correct!</label>
+                {% else %}
+
+                {% endif %}
             {% endif %}
         </div>
     </div>

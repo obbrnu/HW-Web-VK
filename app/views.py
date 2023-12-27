@@ -3,10 +3,11 @@ import math
 from django.contrib import auth
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import render, redirect, reverse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import login, authenticate
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
 
 from app.forms import LoginForm, SignUpForm, QuestionForm, SettingsForm, AnswerForm
 from app.models import *
@@ -96,7 +97,7 @@ def question(request, question_id):
                 date = datetime.datetime(2023, 1, 1)
                 ans = Answer(relatedQuestion=q, text=text, author=author, date=date, rating=0, correct=False)
                 ans.save()
-            answer_form.clean()
+            answer_form = AnswerForm()
             return render(request, 'question.html', {'question': q, 'items': paginate(a, math.ceil((a.count()+1)/5)), 'form': answer_form, 'tags': ts})
     except:
         return HttpResponse(status=404)
@@ -142,7 +143,7 @@ def ask(request):
                 return redirect(f'/question/{q.id}')
     return render(request, "ask.html", {"form": question_form, 'tags': ts})
 
-
+@csrf_protect
 def log_in(request):
     ts = Tag.objects.amountFilter()[:7]
     print(request.GET)
@@ -165,7 +166,7 @@ def log_out(request):
     auth.logout(request)
     return redirect(reverse('login'))
 
-
+@csrf_protect
 def signup(request):
     ts = Tag.objects.amountFilter()[:7]
     print(request.GET)
@@ -188,6 +189,7 @@ def signup(request):
     return render(request, "signup.html", {"form": reg_form,'tags': ts})
 
 @login_required()
+@csrf_protect
 def settings(request):
     ts = Tag.objects.amountFilter()[:7]
     if request.method == "GET":
@@ -214,3 +216,44 @@ def settings(request):
                     profile.save()
             return redirect(reverse("settings"))
     return render(request, "settings.html", {"form": user_form,'tags': ts})
+
+@login_required()
+@csrf_protect
+def likes(request):
+    try:
+        id = request.POST["question_id"]
+        q = Question.objects.get(pk=id)
+        author = Profile.objects.get(id=request.user.id)
+        like = QuestionLike.objects.create(user=author, relatedQuestion=q, like=True)
+        like_type = True
+        like.save()
+        if like_type:
+            q.ratingUp()
+        else:
+            q.ratingDown()
+        count = q.rating
+        q.save()
+        return JsonResponse({'count': count})
+    except:
+        return JsonResponse({"error_code": 404})
+
+
+@login_required()
+@csrf_protect
+def dislikes(request):
+    try:
+        id = request.POST["question_id"]
+        q = Question.objects.get(pk=id)
+        author = Profile.objects.get(id=request.user.id)
+        like = QuestionLike.objects.create(user=author, relatedQuestion=q, like=False)
+        like_type = False
+        like.save()
+        if like_type:
+            q.ratingUp()
+        else:
+            q.ratingDown()
+        count = int(q.rating)
+        q.save()
+        return JsonResponse({'count': count})
+    except:
+        return JsonResponse({"error_code": 404})
